@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Círculo de Imagens Interativo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="slider-container">
+        <div class="main-view">
+            <img id="featured" src="https://images.pexels.com/photos/25949892/pexels-photo-25949892.jpeg" alt="Destaque">
+        </div>
+
+        <div class="circle-ring" id="circleRing">
+            <img class="thumb active" src="https://images.pexels.com/photos/25949892/pexels-photo-25949892.jpeg" onclick="viewImage(this)">
+            <img class="thumb" src="https://images.pexels.com/photos/36121202/pexels-photo-36121202.jpeg" onclick="viewImage(this)">
+            <img class="thumb" src="https://images.pexels.com/photos/36336811/pexels-photo-36336811.jpeg" onclick="viewImage(this)">
+            <img class="thumb" src="https://images.pexels.com/photos/15805757/pexels-photo-15805757.jpeg" onclick="viewImage(this)">
+            <img class="thumb" src="https://images.pexels.com/photos/34693090/pexels-photo-34693090.jpeg" onclick="viewImage(this)">
+            <img class="thumb" src="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg" onclick="viewImage(this)">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
