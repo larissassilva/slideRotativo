@@ -1,0 +1,99 @@
+/* style.css */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #080808; /* Fundo escuro para destacar */
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.slider-container {
+    position: relative;
+    /* Tamanho do círculo externo completo */
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Imagem Central --- */
+.main-view {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%; /* Faz a moldura redonda */
+    overflow: hidden;
+    z-index: 10; /* Garante que fique acima das miniaturas */
+    border: 6px solid #fff;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.main-view img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preenche o círculo sem distorcer */
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+/* --- Anel de Miniaturas --- */
+.circle-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* ANIMAÇÃO 1: Rotaciona o anel completo */
+    animation: rotateRing 25s linear infinite;
+}
+
+/* Pausa a rotação quando o usuário passa o mouse */
+.circle-ring:hover {
+    animation-play-state: paused;
+}
+
+/* Define o movimento do anel */
+@keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- Estilo das Miniaturas --- */
+.thumb {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%; /* Faz a miniatura redonda */
+    object-fit: cover;
+    cursor: pointer;
+    border: 4px solid transparent;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: 0.3s ease;
+    
+    /* Centralização inicial para o cálculo do JS */
+    top: 50%;
+    left: 50%;
+
+    /* ANIMAÇÃO 2: Contrarrotação.
+       Isso faz com que a imagem não fique de ponta-cabeça
+       enquanto o anel gira. */
+    animation: unrotateThumb 25s linear infinite;
+}
+
+/* Mantém as miniaturas em pé */
+@keyframes unrotateThumb {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+.thumb:hover {
+    /* Efeito de zoom na miniatura ao passar o mouse */
+    transform: translate(-50%, -50%) scale(1.2) !important;
+    border-color: rgba(255,255,255,0.5);
+}
+
+.thumb.active {
+    border-color: #00d4ff; /* Cor de destaque */
+    box-shadow: 0 0 20px #00d4ff;
+}
